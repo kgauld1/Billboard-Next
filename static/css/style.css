@@ -101,7 +101,7 @@ body{
 
 .profileImages * {
   margin: 0 0.5em;
-  max-width: 35px;
+  max-width: 50px;
   border-radius: 50%;
   margin-bottom: 1em;
 }

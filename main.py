@@ -15,7 +15,15 @@ def add_header(r):
 def index():
   return render_template("index.html")
 
+@app.route('/previous')
+def previous():
+  return render_template("lastweek.html")
+
+@app.route('/current')
+def current():
+  return render_template("thisweek.html")
+
+
+
 if __name__ == "__main__":
   app.run(host='0.0.0.0', port=8000, debug=True)
-
-  @app.route('')
