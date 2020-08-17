@@ -17,11 +17,11 @@ def index():
 
 @app.route('/previous')
 def previous():
-  return render_template("lastweek.html")
+  return render_template("previous.html")
 
 @app.route('/current')
 def current():
-  return render_template("thisweek.html")
+  return render_template("current.html")
 
 
 
