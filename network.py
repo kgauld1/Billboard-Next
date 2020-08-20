@@ -36,8 +36,3 @@ def predict():
 		ranking.append(charts[1][p])
 	
 	return ranking
-		
-
-	
-
-
