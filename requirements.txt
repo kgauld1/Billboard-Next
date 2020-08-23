@@ -1,6 +1,6 @@
 flask
 billboard.py
 numpy
-pytorch
+torch
 matplotlib
 gunicorn
