@@ -45,10 +45,10 @@ previous = charts[0][:10]
 current = charts[1][:10]
 
 model = Network(600)
-model.load_state_dict(torch.load('best.pt'))
+model.load_state_dict(torch.load('./best.pt'))
 model.eval()
 
-artistFile = open('artists.pickle', 'rb')
+artistFile = open('./artists.pickle', 'rb')
 artists = pickle.load(artistFile)
 
 def get_next():
