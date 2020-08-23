@@ -37,6 +37,9 @@ class Network(nn.Module):
 
       return x
 
+import os 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
 charts = []
 charts.append(billboard.ChartData('hot-100'))
 charts.append(billboard.ChartData('hot-100', charts[0].previousDate))
@@ -45,10 +48,10 @@ previous = charts[0][:10]
 current = charts[1][:10]
 
 model = Network(600)
-model.load_state_dict(torch.load('./best.pt'))
+model.load_state_dict(torch.load('dir_path'+ '/best.pt'))
 model.eval()
 
-artistFile = open('./artists.pickle', 'rb')
+artistFile = open('dir_path'+ '/artists.pickle', 'rb')
 artists = pickle.load(artistFile)
 
 def get_next():
