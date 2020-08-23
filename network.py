@@ -15,7 +15,7 @@ charts.append(billboard.ChartData('hot-100', charts[0].previousDate))
 previous = charts[0][:10]
 current = charts[1][:10]
 
-model = torch.load('bestNet.pth')
+model = torch.jit.load('bestNet.pth')
 model.eval()
 
 artists = pickle.load('artists.pickle')
