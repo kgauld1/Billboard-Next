@@ -1,3 +1,4 @@
+'''
 import billboard
 import pickle
 import numpy as np
@@ -51,7 +52,7 @@ model = Network(600)
 model.load_state_dict(torch.load(dir_path+ '/best.pt'))
 model.eval()
 
-artistFile = open(dir_path+ '/artists.pickle', 'rb')
+artistFile = open(pydir_path+ '/artists.pickle', 'rb')
 artists = pickle.load(artistFile)
 
 def get_next():
@@ -70,3 +71,4 @@ def predict():
 		ranking.append(charts[1][p])
 	
 	return ranking
+'''
