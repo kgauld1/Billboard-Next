@@ -34,7 +34,8 @@ fetch('/songs', {
 
 function searchTrack(name, artist, token){
   let queryString = name + " " + artist;
-  queryString.replace(" ", "%20")
+  
+  queryString = queryString.replace(/\s+/g, '%20')
   console.log(queryString);
   fetch("https://api.spotify.com/v1/search?q=" + queryString + "&type=track&market=US&limit=1", {
       headers: {
