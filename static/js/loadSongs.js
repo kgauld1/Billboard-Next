@@ -7,7 +7,6 @@ fetch('/songs', {
 	}
 }).then(resp => resp.json()).then(json => {
 	let ranks = json.ranks;
-	console.log(ranks);
 	for (let i=0; i<10; i++){
 		var song = document.createElement("div");
 		song.setAttribute("class", "song");
@@ -22,7 +21,7 @@ fetch('/songs', {
 
 		var songInfo = document.createElement("div");
 		songInfo.setAttribute("class", "song-info");
-		songInfo.innerHTML = `<b>${songTitle}</b>${artistName}`
+		songInfo.innerHTML = `<b>${ranks[i].name}</b>${ranks[i].artist}`
 
 		song.appendChild(rank)
 		song.appendChild(songInfo)
