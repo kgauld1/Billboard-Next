@@ -11,7 +11,7 @@ fetch('/songs', {
     let key = json.token
     let url = "https://api.spotify.com/v1/search?q=" + ranks[i].name.replace(/\s+/g, '%20').toLowerCase() + "&type=track&market=US&limit=1"
 
-    let data = await getLink(url,key).catch(console.log);
+    
     var song = document.createElement("div");
     song.setAttribute("class", "song");
 
@@ -27,29 +27,25 @@ fetch('/songs', {
     songInfo.setAttribute("class", "song-info");
     songInfo.innerHTML = `<b>${ranks[i].name}</b>${ranks[i].artist}`
 
-    // var f = document.createElement("form");
-    // f.setAttribute("method", "get");
-    // f.setAttribute("target", "_blank");
-    // f.setAttribute("action", data);
 
-    // var btn = document.createElement("BUTTON");
-    // btn.setAttribute("class", "spotify-button");
-    // btn.setAttribute("type", "submit");
-    // f.appendChild(btn);
+    getLink(url,key).then(data => {
+    // let data = await getLink(url,key).catch(console.log);
 
-    var btn = document.createElement("a");
-    btn.setAttribute("href", data);
-    btn.setAttribute("target", "_blank");
+      var btn = document.createElement("a");
+      btn.setAttribute("href", data);
+      btn.setAttribute("target", "_blank");
 
-    var spotifyImg = document.createElement("img");
-    spotifyImg.setAttribute("class", "spotify-button")
-    spotifyImg.setAttribute("src","/static/images/spotify.png");
-    spotifyImg.setAttribute("alt","Spotify");
-    btn.appendChild(spotifyImg);
+      var spotifyImg = document.createElement("img");
+      spotifyImg.setAttribute("class", "spotify-button")
+      spotifyImg.setAttribute("src","/static/images/spotify.png");
+      spotifyImg.setAttribute("alt","Spotify");
+      btn.appendChild(spotifyImg);
 
-    song.appendChild(rank)
-    song.appendChild(songInfo)
-    song.appendChild(btn)
+      song.appendChild(rank)
+      song.appendChild(songInfo)
+      song.appendChild(btn)
+
+    }).catch(console.log);
 
     ranking.appendChild(song);
 		
