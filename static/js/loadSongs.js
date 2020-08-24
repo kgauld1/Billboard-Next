@@ -1,17 +1,4 @@
 var ranking = document.getElementById("ranking");
-require('dotenv').config()
-let token = "";
-fetch("https://accounts.spotify.com/api/token", {
-    body: "grant_type=client_credentials",
-    headers: {
-        Authorization: "Basic " + process.env.key,
-        "Content-Type": "application/x-www-form-urlencoded"
-    },
-    method: "POST"
-}).then(resp => resp.json()).then(json => {
-    console.log(json['access_token']);
-    token = json['access_token'];
-});
 
 fetch('/songs', {
 	method: 'POST',

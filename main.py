@@ -1,5 +1,21 @@
 from flask import Flask, render_template, jsonify
 import network
+from os import environ
+import requests
+import json
+
+client_id = environ.get('CLIENT_ID');
+client_secret = environ.get('CLIENT_SECRET');
+body_params = {'grant_type' : 'client_credentials'}
+url='https://accounts.spotify.com/api/token'
+
+response=requests.post(url, data=body_params, auth = (client_id, client_secret))
+
+postDict = json.loads(response.text)
+token = postDict['access_token']
+print(token);
+
+
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
@@ -27,6 +43,7 @@ def current():
 @app.route('/songs', methods=['POST'])
 def songs():
   rankings = network.predict()[:10]
+  print(rankings)
   return jsonify(ranks=rankings)
 
 if __name__ == "__main__":
