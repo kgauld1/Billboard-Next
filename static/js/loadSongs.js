@@ -35,7 +35,7 @@ fetch('/songs', {
       var btn = document.createElement("BUTTON");
       btn.setAttribute("class", "spotify-button");
       btn.setAttribute("type", "submit");
-      f.setAttribute("action", data");
+      f.setAttribute("action", data);
       f.appendChild(btn);
 
       song.appendChild(rank)
