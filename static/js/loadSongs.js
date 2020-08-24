@@ -38,9 +38,12 @@ fetch('/songs', {
     let key = json.token
     let url = "https://api.spotify.com/v1/search?q=" + ranks[i].name.replace(/\s+/g, '%20').toLowerCase() + "&type=track&market=US&limit=1"
 
-    let link = getLink(url,key);
-
-    f.setAttribute("action", link.then(link.data));
+    
+    getLink(url,key).then(function(data){
+      f.setAttribute("action", data);
+    }).catch(function(error){
+      console.log(error);
+    })
     
 
 		song.appendChild(rank)
