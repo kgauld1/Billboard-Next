@@ -68,6 +68,9 @@ def predict():
 	newPos = np.argsort(list(outputs))
 	ranking = []
 	for p in newPos:
-		ranking.append(charts[1][p])
+		chart = charts[1][p]
+		name = chart.title
+		artist = chart.artist
+		ranking.append({'name': name, 'artist': artist})
 	
 	return ranking
