@@ -26,7 +26,6 @@ fetch('/songs', {
     //console.log(json.token);
 
     let url = "https://api.spotify.com/v1/search?q=" + ranks[i].name.replace(/\s+/g, '%20').toLowerCase() + "&type=track&market=US&limit=1"
-    console.log(url);
     fetch(url, {
       headers: {
         Accept: "application/json",
@@ -34,7 +33,6 @@ fetch('/songs', {
         "Content-Type": "application/json"
       }
     }).then(resp => resp.json()).then(json2 => {
-      console.log(json2);
       console.log(json2['tracks']['items'][0]['external_urls']['spotify']);
     });
 
