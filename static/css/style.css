@@ -65,7 +65,7 @@ body{
   margin-left: 10%;
   width: 80%;
   display: grid;
-  grid-template-columns: 5% 95%;
+  grid-template-columns: 5% 85% 10%;
   color: #344072;
 	border: 3px solid  gainsboro;
 

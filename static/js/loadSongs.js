@@ -27,10 +27,11 @@ fetch('/songs', {
     songInfo.setAttribute("class", "song-info");
     songInfo.innerHTML = `<b>${ranks[i].name}</b>${ranks[i].artist}`
 
-    
+
     let data = await getLink(url,key).catch(console.log);
 
     var btn = document.createElement("a");
+    btn.setAttribute("class", 'spotify-link');
     btn.setAttribute("href", data);
     btn.setAttribute("target", "_blank");
 
