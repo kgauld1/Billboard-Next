@@ -23,7 +23,7 @@ fetch('/songs', {
 		songInfo.setAttribute("class", "song-info");
 		songInfo.innerHTML = `<b>${ranks[i].name}</b>${ranks[i].artist}`
 
-		print(searchTrack(ranks[i].name, ranks[i].artist))
+		print(searchTrack(ranks[i].name, ranks[i].artist, json.token))
 
 		song.appendChild(rank)
 		song.appendChild(songInfo)
@@ -32,13 +32,13 @@ fetch('/songs', {
 	}
 });
 
-function searchTrack(name, artist){
+function searchTrack(name, artist, token){
   let queryString = name + " " + artist;
   queryString.replace(" ", "%20")
   fetch("https://api.spotify.com/v1/search?q=" + queryString + "&type=track&market=US&limit=1", {
       headers: {
           Accept: "application/json",
-          Authorization: "Bearer " + json.token,
+          Authorization: "Bearer " + token,
           "Content-Type": "application/json"
       }
     }).then(resp => resp.json()).then(json => {
