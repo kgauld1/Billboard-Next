@@ -49,6 +49,8 @@ function searchTrack(name, token){
           "Content-Type": "application/json"
       }
     }).then(resp => resp.json()).then(json2 => {
+      console.log(json2);
+      console.log(json2['tracks']['items'][0]['external_urls']['spotify']);
       return json2['tracks']['items'][0]['external_urls']['spotify'];
     });
 }
