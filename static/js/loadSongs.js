@@ -43,7 +43,7 @@ fetch('/songs', {
     }).then(resp => resp.json()).then(json2 => {
       let link = json2['tracks']['items'][0]['external_urls']['spotify']
       console.log(link);
-      f.setAttribute("target", link);
+      f.setAttribute("action", link);
     });
 
 		song.appendChild(rank)
