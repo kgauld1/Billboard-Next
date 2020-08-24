@@ -31,7 +31,7 @@ fetch('/songs', {
     var btn = document.createElement("BUTTON");
     btn.setAttribute("class", "spotify-button");
     btn.setAttribute("type", "submit");
-    f.setAttribute("action", "");
+    f.setAttribute("action", "https://google.com");
     f.appendChild(btn);
 
     let url = "https://api.spotify.com/v1/search?q=" + ranks[i].name.replace(/\s+/g, '%20').toLowerCase() + "&type=track&market=US&limit=1"
