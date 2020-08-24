@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 import network
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
@@ -24,7 +24,10 @@ def previous():
 def current():
   return render_template("current.html")
 
-
+@app.route('/songs', methods=['POST'])
+def songs():
+  rankings = network.predict()[:10]
+  return jsonify(ranks=rankings)
 
 if __name__ == "__main__":
   app.run(host='0.0.0.0', port=8000, debug=True) 
