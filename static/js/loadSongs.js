@@ -42,7 +42,7 @@ fetch('/songs', {
       btn.setAttribute("href", data);
       btn.setAttribute("target", "_blank");
 
-      var spotifyImg = document.createElement(img);
+      var spotifyImg = document.createElement("img");
       spotifyImg.setAttribute("src","/static/images/spotify.png");
       spotifyImg.setAttribute("alt","Spotify");
       btn.appendChild(spotifyImg);
