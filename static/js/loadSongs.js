@@ -25,7 +25,7 @@ fetch('/songs', {
 
     var f = document.createElement("form");
     f.setAttribute("method", "get");
-    f.setAttribute("target", "_blank);
+    f.setAttribute("target", "_blank");
 
 
     var btn = document.createElement("BUTTON");
