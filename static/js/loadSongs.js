@@ -28,19 +28,28 @@ fetch('/songs', {
       songInfo.setAttribute("class", "song-info");
       songInfo.innerHTML = `<b>${ranks[i].name}</b>${ranks[i].artist}`
 
-      var f = document.createElement("form");
-      f.setAttribute("method", "get");
-      f.setAttribute("target", "_blank");
+      // var f = document.createElement("form");
+      // f.setAttribute("method", "get");
+      // f.setAttribute("target", "_blank");
+      // f.setAttribute("action", data);
 
-      var btn = document.createElement("BUTTON");
-      btn.setAttribute("class", "spotify-button");
-      btn.setAttribute("type", "submit");
-      f.setAttribute("action", data);
-      f.appendChild(btn);
+      // var btn = document.createElement("BUTTON");
+      // btn.setAttribute("class", "spotify-button");
+      // btn.setAttribute("type", "submit");
+      // f.appendChild(btn);
+
+      var btn = document.createElement("a");
+      btn.setAttribute("href", data);
+      btn.setAttribute("target", "_blank");
+
+      var spotifyImg = document.createElement(img);
+      spotifyImg.setAttribute("src","/static/images/spotify.png");
+      spotifyImg.setAttribute("alt","Spotify");
+      btn.appendChild(spotifyImg);
 
       song.appendChild(rank)
       song.appendChild(songInfo)
-      song.appendChild(f)
+      song.appendChild(btn)
 
       ranking.appendChild(song);
 
