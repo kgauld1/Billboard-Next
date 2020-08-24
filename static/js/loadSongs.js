@@ -1,5 +1,5 @@
 var ranking = document.getElementById("ranking");
-
+require('dotenv').config()
 let token = "";
 fetch("https://accounts.spotify.com/api/token", {
     body: "grant_type=client_credentials",
