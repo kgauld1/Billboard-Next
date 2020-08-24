@@ -23,15 +23,7 @@ fetch('/songs', {
 		songInfo.setAttribute("class", "song-info");
 		songInfo.innerHTML = `<b>${ranks[i].name}</b>${ranks[i].artist}`
 
-		fetch("https://api.spotify.com/v1/search?q=watermelon%20sugar%20harry%20styles&type=track&market=US&limit=1", {
-      headers: {
-          Accept: "application/json",
-          Authorization: "Bearer " + json.token,
-          "Content-Type": "application/json"
-      }
-    }).then(resp => resp.json()).then(json => {
-      console.log(json['tracks']['items'][0]['external_urls']['spotify']);
-    });
+		print(searchTrack(ranks[i].name, ranks[i].artist))
 
 		song.appendChild(rank)
 		song.appendChild(songInfo)
@@ -40,3 +32,16 @@ fetch('/songs', {
 	}
 });
 
+function searchTrack(name, artist){
+  let queryString = name + " " + artist;
+  queryString.replace(" ", "%20")
+  fetch("https://api.spotify.com/v1/search?q=" + queryString + "&type=track&market=US&limit=1", {
+      headers: {
+          Accept: "application/json",
+          Authorization: "Bearer " + json.token,
+          "Content-Type": "application/json"
+      }
+    }).then(resp => resp.json()).then(json => {
+      return json['tracks']['items'][0]['external_urls']['spotify'];
+    });
+}
