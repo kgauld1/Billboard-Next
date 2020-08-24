@@ -23,7 +23,7 @@ fetch('/songs', {
 		songInfo.setAttribute("class", "song-info");
 		songInfo.innerHTML = `<b>${ranks[i].name}</b>${ranks[i].artist}`
 
-		print(searchTrack(ranks[i].name, ranks[i].artist, json.token))
+		console.log(searchTrack(ranks[i].name, ranks[i].artist, json.token))
 
 		song.appendChild(rank)
 		song.appendChild(songInfo)
