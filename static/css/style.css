@@ -89,9 +89,6 @@ body{
 }
 
 .spotify-button{
-  display: flex;
-  flex-direction: column;
-  margin-right: 2em;
   width: 70%;
   height: 70%;
 }
