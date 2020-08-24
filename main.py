@@ -27,7 +27,7 @@ def current():
 @app.route('/songs', methods=['POST'])
 def songs():
   rankings = network.predict()[:10]
-	print(rankings)
+  print(rankings)
   return jsonify(ranks=rankings)
 
 if __name__ == "__main__":
