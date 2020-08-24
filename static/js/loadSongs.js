@@ -61,7 +61,7 @@ function getLink(requestUrl, apikey){
       }
     }).then(resp => resp.json()).then(json2 => {
       let link = json2['tracks']['items'][0]['external_urls']['spotify']
-      console.log(link);
+      //console.log(link);
       if(link == undefined) reject(new Error("undefined link"));
       else resolve(link);
     });
