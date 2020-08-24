@@ -23,15 +23,15 @@ fetch('/songs', {
 		songInfo.setAttribute("class", "song-info");
 		songInfo.innerHTML = `<b>${ranks[i].name}</b>${ranks[i].artist}`
 
-		// var sdata = fetch('https://accounts.spotify.com/api/token', {
-		// 	method: 'POST',
-		// 	headers: {
-		// 		'Content-Type': 'application/json',
-		// 		'Authorization': 'BASIC '
-		// 	},
-		// 	body: JSON.stringify({})
-		// }
-		// console.log(sdata);
+		fetch("https://api.spotify.com/v1/search?q=watermelon%20sugar%20harry%20styles&type=track&market=US&limit=1", {
+      headers: {
+          Accept: "application/json",
+          Authorization: "Bearer " + json.token,
+          "Content-Type": "application/json"
+      }
+    }).then(resp => resp.json()).then(json => {
+      console.log(json['tracks']['items'][0]['external_urls']['spotify']);
+    });
 
 		song.appendChild(rank)
 		song.appendChild(songInfo)

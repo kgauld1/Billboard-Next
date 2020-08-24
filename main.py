@@ -44,7 +44,7 @@ def current():
 def songs():
   rankings = network.predict()[:10]
   print(rankings)
-  return jsonify(ranks=rankings)
+  return jsonify(ranks=rankings, token=token)
 
 if __name__ == "__main__":
   app.run(host='0.0.0.0', port=8000, debug=True) 
