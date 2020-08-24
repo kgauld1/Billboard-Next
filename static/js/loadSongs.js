@@ -27,25 +27,22 @@ fetch('/songs', {
     songInfo.setAttribute("class", "song-info");
     songInfo.innerHTML = `<b>${ranks[i].name}</b>${ranks[i].artist}`
 
+    
+    let data = await getLink(url,key).catch(console.log);
 
-    getLink(url,key).then(data => {
-    // let data = await getLink(url,key).catch(console.log);
+    var btn = document.createElement("a");
+    btn.setAttribute("href", data);
+    btn.setAttribute("target", "_blank");
 
-      var btn = document.createElement("a");
-      btn.setAttribute("href", data);
-      btn.setAttribute("target", "_blank");
+    var spotifyImg = document.createElement("img");
+    spotifyImg.setAttribute("class", "spotify-button")
+    spotifyImg.setAttribute("src","/static/images/spotify.png");
+    spotifyImg.setAttribute("alt","Spotify");
+    btn.appendChild(spotifyImg);
 
-      var spotifyImg = document.createElement("img");
-      spotifyImg.setAttribute("class", "spotify-button")
-      spotifyImg.setAttribute("src","/static/images/spotify.png");
-      spotifyImg.setAttribute("alt","Spotify");
-      btn.appendChild(spotifyImg);
-
-      song.appendChild(rank)
-      song.appendChild(songInfo)
-      song.appendChild(btn)
-
-    }).catch(console.log);
+    song.appendChild(rank)
+    song.appendChild(songInfo)
+    song.appendChild(btn)
 
     ranking.appendChild(song);
 		
