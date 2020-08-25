@@ -43,9 +43,10 @@ def current():
 @app.route('/songs', methods=['POST'])
 def songs():
   data = request.data
-  if data == "current":
+  print(data)
+  if data == "this":
     rankings = network.getCurrent()[:10]
-  elif data == 'previous':
+  elif data == 'last':
     rankings = network.getPrevious()[:10]
   else:
     rankings = network.predict()[:10]

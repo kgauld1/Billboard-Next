@@ -51,6 +51,7 @@ function loadWeek(type){
     },
     body: type
   }).then(resp => resp.json()).then(async json => {
+    document.getElementsByClassName('title')[0].innerHTML = type.toUpperCase() + "WEEK'S TOP 10";
     loadSongs(json);
   });
 }
