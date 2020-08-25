@@ -1,6 +1,6 @@
 var ranking = document.getElementById("ranking");
 
-function loadSongs(json){
+async function loadSongs(json){
   ranking.innerHTML = "";
   let ranks = json.ranks;
 	for (let i=0; i<10; i++){
