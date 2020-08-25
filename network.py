@@ -8,6 +8,7 @@ import torch.nn.functional as F
 import math, time
 from torch.autograd import Variable
 import matplotlib.pyplot as plt
+import random
 
 class Network(nn.Module):
     def __init__(self, in_size=64):
@@ -67,7 +68,7 @@ def get_next():
 	x = []
 
 	for song in charts[1]:
-		x.extend([artists[song.artist], song.peakPos, song.lastPos, song.weeks, song.rank, song.isNew])
+		x.extend([artists[song.artist] or random.random(), song.peakPos, song.lastPos, song.weeks, song.rank, song.isNew])
 
 	return torch.FloatTensor(np.array([x, x]))
 
