@@ -43,8 +43,8 @@ def current():
 @app.route('/songs', methods=['POST'])
 def songs():
   data = request.get_json()['type']
-  
-  if data == "this":
+
+  if data == 'this':
     rankings = network.getCurrent()[:10]
   elif data == 'last':
     rankings = network.getPrevious()[:10]
