@@ -69,8 +69,8 @@ def get_next():
 
 	for song in charts:
 		artist = 0
-    if song.artist in artists: artist = song.artist
-    else: artist = random.random() * 10
+		if song.artist in artists: artist = song.artist
+		else: artist = random.random() * 10
 		x.extend([artist, song.peakPos, song.lastPos, song.weeks, song.rank, song.isNew])
 
 	return torch.FloatTensor(np.array([x, x]))
