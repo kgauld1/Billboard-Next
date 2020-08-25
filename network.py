@@ -68,7 +68,7 @@ def get_next():
 	x = []
 
 	for song in charts:
-    artist = 0
+		artist = 0
     if song.artist in artists: artist = song.artist
     else: artist = random.random() * 10
 		x.extend([artist, song.peakPos, song.lastPos, song.weeks, song.rank, song.isNew])
