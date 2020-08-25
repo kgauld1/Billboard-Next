@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import network
 from os import environ
 import requests
@@ -42,8 +42,14 @@ def current():
 
 @app.route('/songs', methods=['POST'])
 def songs():
-  rankings = network.predict()[:10]
-  print(rankings)
+  data = request.data
+  if data == "current":
+    rankings = network.getCurrent()[:10]
+  elif data == 'previous':
+    rankings = network.getPrevious()[:10]
+  else:
+    rankings = network.predict()[:10]
+
   return jsonify(ranks=rankings, token=token)
 
 if __name__ == "__main__":

@@ -82,3 +82,18 @@ def predict():
 		ranking.append({'name': name, 'artist': artist})
 	
 	return ranking
+
+def getCurrent():
+  data = billboard.ChartData('hot-100')
+  chs = []
+  for song in data:
+    chs.append({'name': song.title, 'artist': song.artist});
+  return chs
+  
+def getPrevious():
+  data = billboard.ChartData('hot-100')
+  data = billboard.ChartData('hot-100', data.previousDate)
+  chs = []
+  for song in data:
+    chs.append({'name': song.title, 'artist': song.artist});
+  return chs

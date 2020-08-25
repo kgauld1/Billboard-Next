@@ -1,16 +1,11 @@
 var ranking = document.getElementById("ranking");
 
-fetch('/songs', {
-	method: 'POST',
-	headers: {
-		'Content-Type': 'application/json'
-	}
-}).then(resp => resp.json()).then(async json => {
-	let ranks = json.ranks;
+function loadSongs(json){
+  ranking.innerHTML = "";
+  let ranks = json.ranks;
 	for (let i=0; i<10; i++){
     let key = json.token
-    let url = "https://api.spotify.com/v1/search?q=" + ranks[i].name.replace(/\s+/g, '%20').toLowerCase() + "&type=track&market=US&limit=1"
-
+    let url = "https://api.spotify.com/v1/search?q=" + ranks[i].name.replace(/\s+/g, '%20').toLowerCase() + "&type=track&market=US&limit=1";
     
     var song = document.createElement("div");
     song.setAttribute("class", "song");
@@ -26,7 +21,6 @@ fetch('/songs', {
     var songInfo = document.createElement("div");
     songInfo.setAttribute("class", "song-info");
     songInfo.innerHTML = `<b>${ranks[i].name}</b>${ranks[i].artist}`
-
 
     let data = await getLink(url,key).catch(console.log);
 
@@ -46,9 +40,22 @@ fetch('/songs', {
     song.appendChild(btn)
 
     ranking.appendChild(song);
-		
 	}
-});
+}
+
+function loadWeek(type){
+  fetch('/songs', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: type
+  }).then(resp => resp.json()).then(async json => {
+    loadSongs(json);
+  });
+}
+
+loadWeek('next');
 
 async function getLink(requestUrl, apikey){
   let resp = await fetch(requestUrl, {
@@ -63,21 +70,3 @@ async function getLink(requestUrl, apikey){
   if(link == undefined) return null
   return link;  
 }
-
-// function getLink(requestUrl, apikey){
-//   let promise = new Promise(function(resolve, reject){
-//     fetch(requestUrl, {
-//       headers: {
-//         Accept: "application/json",
-//         Authorization: "Bearer " + apikey,
-//         "Content-Type": "application/json"
-//       }
-//     }).then(resp => resp.json()).then(json2 => {
-//       let link = json2['tracks']['items'][0]['external_urls']['spotify']
-//       //console.log(link);
-//       if(link == undefined) reject(new Error("undefined link"));
-//       else resolve(link);
-//     });
-//   })
-//   return promise;
-// }
