@@ -58,16 +58,16 @@ artists = pickle.load(artistFile)
 
 def get_next():
 
-	charts = []
-	charts.append(billboard.ChartData('hot-100'))
-	charts.append(billboard.ChartData('hot-100', charts[0].previousDate))
+	# charts = []
+	charts = billboard.ChartData('hot-100')
+	# charts.append(billboard.ChartData('hot-100', charts[0].previousDate))
 	
-	previous = charts[0][:10]
-	current = charts[1][:10]
+	# previous = charts[0][:10]
+	# current = charts[1][:10]
 
 	x = []
 
-	for song in charts[1]:
+	for song in charts:
 		x.extend([artists[song.artist] or random.random(), song.peakPos, song.lastPos, song.weeks, song.rank, song.isNew])
 
 	return torch.FloatTensor(np.array([x, x]))
