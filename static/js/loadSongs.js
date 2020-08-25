@@ -49,9 +49,9 @@ function loadWeek(type){
     headers: {
       'Content-Type': 'application/json'
     },
-    body: type
+    body: JSON.stringify({type: type})
   }).then(resp => resp.json()).then(async json => {
-    document.getElementsByClassName('title')[0].innerHTML = type.toUpperCase() + "WEEK'S TOP 10";
+    document.getElementById('title')[0].innerHTML = type.toUpperCase() + "WEEK'S TOP 10";
     loadSongs(json);
   });
 }
