@@ -42,12 +42,11 @@ class Network(nn.Module):
 import os 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-charts = []
-charts.append(billboard.ChartData('hot-100'))
-charts.append(billboard.ChartData('hot-100', charts[0].previousDate))
+charts = billboard.ChartData('hot-100')
+# charts.append(billboard.ChartData('hot-100', charts[0].previousDate))
 
-previous = charts[0][:10]
-current = charts[1][:10]
+# previous = charts[0][:10]
+# current = charts[1][:10]
 
 model = Network(600)
 model.load_state_dict(torch.load('best.pt'))
@@ -58,16 +57,15 @@ artists = pickle.load(artistFile)
 
 def get_next():
 
-	charts = []
-	charts.append(billboard.ChartData('hot-100'))
-	charts.insert(0, billboard.ChartData('hot-100', charts[0].previousDate))
+	charts = billboard.ChartData('hot-100')
+	# charts.insert(0, billboard.ChartData('hot-100', charts[0].previousDate))
 	
 	# previous = charts[0][:10]
 	# current = charts[1][:10]
 
 	x = []
 
-	for song in charts[1]:
+	for song in charts:
 		artist = 0
 		if song.artist in artists: artist = artists[song.artist]
 		else: artist = random.random() * 10
@@ -80,7 +78,7 @@ def predict():
 	newPos = np.argsort(list(outputs))
 	ranking = []
 	for p in newPos:
-		chart = charts[1][p]
+		chart = charts[p]
 		name = chart.title
 		artist = chart.artist
 		ranking.append({'name': name, 'artist': artist})
