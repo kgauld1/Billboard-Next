@@ -58,16 +58,16 @@ artists = pickle.load(artistFile)
 
 def get_next():
 
-	# charts = []
-	charts = billboard.ChartData('hot-100')
-	# charts.append(billboard.ChartData('hot-100', charts[0].previousDate))
+	charts = []
+	charts.append(billboard.ChartData('hot-100'))
+	charts.insert(0, billboard.ChartData('hot-100', charts[0].previousDate))
 	
 	# previous = charts[0][:10]
 	# current = charts[1][:10]
 
 	x = []
 
-	for song in charts:
+	for song in charts[1]:
 		artist = 0
 		if song.artist in artists: artist = song.artist
 		else: artist = random.random() * 10
