@@ -42,7 +42,7 @@ def current():
 
 @app.route('/songs', methods=['POST'])
 def songs():
-  data = request.data['type']
+  data = request.json['type']
   if data == "this":
     rankings = network.getCurrent()[:10]
   elif data == 'last':
